@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b5721c46.css",
+    "main.js": "/static/js/main.e03c0a91.js",
+    "static/media/loginImg.png": "/static/media/loginImg.f23597d40255e541de24.png",
+    "static/media/cookie.jpg": "/static/media/cookie.491a1acc04bc69beb6a1.jpg",
+    "static/media/background.png": "/static/media/background.873e7609569a2f24615d.png",
+    "static/media/headPhone.jpg": "/static/media/headPhone.5c4331ab59989ba9b0ed.jpg",
+    "static/media/perfume.jpg": "/static/media/perfume.5ebe4483e34b07ed6890.jpg",
+    "static/media/glass.jpg": "/static/media/glass.48250bc4f6362f5bcbd2.jpg",
+    "index.html": "/index.html",
+    "main.b5721c46.css.map": "/static/css/main.b5721c46.css.map",
+    "main.e03c0a91.js.map": "/static/js/main.e03c0a91.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b5721c46.css",
+    "static/js/main.e03c0a91.js"
+  ]
+}
