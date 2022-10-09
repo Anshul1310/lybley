@@ -1,0 +1,65 @@
+.addUserContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.addUserHead {
+    display: flex;
+    align-self: flex-start;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.fields1 {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+    width: 65vw;
+}
+
+.fields1 label {
+    font-weight: bold;
+    color: #6439ff;
+}
+
+.orgName,
+.buyerCate,
+.personName,
+.buyerAddress,
+.buyerNumber,
+.buyerAddiNumber,
+.buyerEmail,
+.buyerTinNum {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    width: 30vw;
+}
+
+#org,
+#buyerCategory,
+#person_name,
+#address,
+#buyerPhoneNum,
+#buyerAddiNum,
+#buyerEmal,
+#buyerTin {
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    outline: none;
+}
+
+.addUserButton {
+    background: #4747fd;
+    color: #fff;
+    padding: 0.7rem;
+    /* border-radius: 20px; */
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.addUserButton:hover {
+    background-color: #0000fd;
+}

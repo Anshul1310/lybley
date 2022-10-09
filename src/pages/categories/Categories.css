@@ -1,0 +1,142 @@
+.categoriesPage {
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.notification_main {
+    display: flex;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.box .main {
+    padding: 0.5rem 1rem
+}
+
+.categories table img {
+    height: 80px;
+    width: 97px;
+    border-radius: 10px;
+}
+
+.categories table {
+    text-align: center;
+    background: #f3f3f3;
+    border: 1px solid #bbb;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 81.2vw;
+}
+
+.categories table thead tr {
+    font-size: 14px;
+}
+
+
+.news_main {
+    display: flex;
+}
+
+.viewNewsHead {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.newsInput input,
+.newsInput textarea {
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    outline: none;
+}
+
+.newsInput {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.addCategoryBtn span,
+.editCategoryBtn span {
+    align-self: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    background: #4747fd;
+    padding: 0.7rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.addCategoryBtn:hover span,
+.editCategoryBtn:hover span {
+    background-color: #0000fd;
+}
+
+.addCategory,
+.editCategory {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    width: 21vw;
+}
+
+.addCategory select,
+.addCategory input,
+.editCategory select,
+.editCategory input {
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    outline: none;
+}
+
+
+#modalEdit {
+    /* height: 200px; */
+    width: 600px;
+    background-color: #c1c1c1;
+    border-radius: 10px;
+    /* position: absolute; */
+    position: fixed;
+    /* top: 202px;
+    left: 445px; */
+    display: none;
+    padding: 1rem;
+    flex-direction: column;
+    row-gap: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#deleteModal {
+    /* height: 200px; */
+    width: 965px;
+    background-color: #c1c1c1;
+    border-radius: 10px;
+    /* position: absolute; */
+    position: fixed;
+    /* top: 202px;
+    left: 445px; */
+    padding: 1rem;
+    display: none;
+    flex-direction: column;
+    row-gap: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-44%, -50%);
+}
+
+.modalTable {
+    height: 337px;
+    overflow-y: scroll;
+}

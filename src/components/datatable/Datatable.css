@@ -1,0 +1,48 @@
+.status_container {
+	display: flex;
+	justify-content: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 30px;
+	align-items: center;
+	background-color: #A1D69E;
+	color: #20A422;
+}
+
+h1 {
+	padding: 10px;
+}
+
+.viewbtn,
+.deletebtn {
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	padding: 0.5rem 1rem;
+	border-radius: 15px;
+}
+
+.viewbtn {
+	background: #05b171;
+	transition: all 0.1s linear;
+}
+
+.deletebtn {
+	background: #ea4444;
+	transition: all 0.1s linear;
+}
+
+.btn {
+	display: flex;
+	column-gap: 10px;
+}
+
+.viewbtn:hover {
+	background-color: #049660;
+}
+
+.deletebtn:hover {
+	background-color: #c73a3a;
+}

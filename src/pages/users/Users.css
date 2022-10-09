@@ -1,0 +1,123 @@
+.UsersPage {
+	padding: 1rem;
+	margin: 1rem;
+	display: flex;
+	flex-direction: column;
+	row-gap: 25px;
+}
+
+.allUsers {
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid #bbb;
+	border-radius: 10px;
+}
+
+.allUsers table {
+	text-align: center;
+	background: #f3f3f3;
+	padding: 1rem;
+	border-radius: 10px;
+	width: 82.4vw;
+}
+
+.allUsers table thead tr {
+	font-size: 14px;
+}
+
+.viewUser {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	width: 335px;
+}
+
+
+
+.activeUser span {
+	background-color: #05b171;
+}
+
+.passiveUser span {
+	background-color: #ea4444;
+}
+
+.activeUser span,
+.passiveUser span {
+	color: #fff;
+	border-radius: 20px;
+	padding: 0.2rem 0.5rem;
+}
+
+
+.container {
+	/* opacity: 0.3; */
+	/* position: relative; */
+}
+
+.editAndCloseBtn {
+	display: flex;
+	column-gap: 20px;
+}
+
+.editBtn,
+.closeBtn {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+	padding: 0.8rem 1rem;
+	border-radius: 10px;
+	cursor: pointer;
+	color: #fff;
+}
+
+
+.editBtn {
+	background-color: #05b171;
+	transition: all 0.1s linear;
+}
+
+.closeBtn {
+	background-color: #ea4444;
+	transition: all 0.1s linear;
+}
+
+.information1 .closeBtn {
+	display: none;
+}
+
+.editBtn:hover {
+	background-color: #049660;
+}
+
+.closeBtn:hover {
+	background-color: #c73a3a;
+}
+
+.addUserBtn a {
+	text-decoration: none;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+	background: #4747fd;
+	padding: 0.7rem;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 0.1s linear;
+}
+
+.addUserBtn {
+	align-self: center;
+}
+
+.addUserBtn a:hover {
+	background-color: #0000fd;
+}
+
+.editFields1 .viewUser input,
+.editFields1 .viewUser select,
+.editFields1 .viewUser textarea {
+	padding: 0.5rem 1rem;
+	font-size: 18px;
+}

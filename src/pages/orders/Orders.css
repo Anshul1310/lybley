@@ -1,0 +1,165 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ordersPage {
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.table {
+    align-self: center;
+}
+
+.table table {
+    text-align: center;
+    background: #f3f3f3;
+    border: 1px solid #bbb;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 81.2vw;
+}
+
+.allOrders {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.allOrders table {
+    text-align: center;
+    background: #f3f3f3;
+    border: 1px solid #bbb;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 81.2vw;
+}
+
+.allOrders table thead tr {
+    font-size: 14px;
+}
+
+.processing span,
+.dispatched span,
+.refunded span,
+.completed span,
+.cancelled span {
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.2rem 0.5rem;
+}
+
+.preparing span {
+    background: #ff6e40;
+}
+
+.dispatched span {
+    background: #293134;
+}
+
+.refunded span {
+    background-color: #faee42;
+}
+
+.delivered span {
+    background-color: #05b171;
+}
+
+.cancelled span {
+    background-color: #ea4444;
+}
+
+
+.container {
+    /* opacity: 0.3; */
+    /* position: relative; */
+}
+
+.editFields {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    row-gap: 20px;
+    width: 77vw;
+    column-gap: 20px;
+}
+
+.viewOrder {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    width: 335px;
+}
+
+.editAndCloseBtn {
+    display: flex;
+    column-gap: 20px;
+}
+
+.editFields .viewOrder input {
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+}
+
+#modal h2,
+.editAndCloseBtn {
+    align-self: center;
+}
+
+.editBtn,
+.closeBtn {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+.editBtn {
+    background-color: #05b171;
+    transition: all 0.1s linear;
+}
+
+.closeBtn {
+    background-color: #ea4444;
+    transition: all 0.1s linear;
+}
+
+.information1 .closeBtn {
+    display: none;
+}
+
+.editBtn:hover {
+    background-color: #049660;
+}
+
+.closeBtn:hover {
+    background-color: #c73a3a;
+}
+
+.view {
+    background-color: #05b171;
+    border-radius: 20px;
+    padding: 0.2rem 0.5rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.view a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.viewOrderHead {
+    display: flex;
+    align-self: flex-start;
+    column-gap: 20px;
+    align-items: center;
+}

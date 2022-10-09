@@ -1,0 +1,212 @@
+.login {
+    background-color: #6f68fe;
+    position: relative;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.login::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: url('./background.png');
+}
+
+.loginBox {
+    background: #fff;
+    padding: 2rem;
+    width: 68vw;
+    border-radius: 17px;
+    height: 465px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 0 auto; */
+}
+
+.loginBox img {
+    height: 370px;
+    width: 394px;
+}
+
+.loginDetails {
+    width: 33vw;
+}
+
+.loginDetails h1 {
+    font-size: 45px;
+    color: #333333;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+.loginDetails p {
+    margin-bottom: 30px;
+    color: #666666;
+    font-family: sans-serif;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    margin-bottom: 15px;
+}
+
+.input input {
+    padding: 0.6rem 1rem 0.6rem 3rem;
+    border: 1px solid #e4e4e4;
+    font-size: 19px;
+    width: 22vw;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.3s linear;
+    position: relative;
+}
+
+.input input:focus {
+    border-color: #6f68fe;
+}
+
+#email:focus~.emal path {
+    fill: #6f68fe;
+}
+
+#pass:focus~.lock path {
+    fill: #6f68fe;
+}
+
+.emal {
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    padding: 0.5rem;
+    top: 250px;
+    left: 705px;
+}
+
+.lock {
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    padding: 0.5rem;
+    top: 311px;
+    left: 705px;
+}
+
+.buttons {
+    display: flex;
+    column-gap: 15px;
+    margin-bottom: 25px;
+    align-self: center;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.adminBtn,
+.sellerBtn {
+    color: #fff;
+    background: #f77659;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.adminBtn {
+    display: none;
+}
+
+.check input {
+    display: none;
+}
+
+.check {
+    margin: 20px 0;
+}
+
+.check input:checked~span {
+    color: #6f68fe;
+}
+
+.check input:checked~span::before {
+    background-color: #6f68fe;
+    border: 1px solid transparent;
+}
+
+.check span {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    margin: 0;
+}
+
+.check label {
+    font-size: 18px;
+    color: #666666;
+}
+
+.check span::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #666666;
+    border-radius: 2px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+
+.check input:checked~span:after {
+    opacity: 1;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.check span::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    width: 10px;
+    height: 5px;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+    opacity: 0;
+}
+
+.register a {
+    color: #6f68fe;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.register {
+    font-size: 19px;
+}

@@ -1,0 +1,77 @@
+.staticProductsPage {
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.addSProducts a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    background: #4747fd;
+    padding: 0.7rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.addSProducts {
+    align-self: center;
+}
+
+.addSProducts a:hover {
+    background-color: #0000fd;
+}
+
+.staticProducts {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.staticProducts table {
+    text-align: center;
+    background: #f3f3f3;
+    border: 1px solid #bbb;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 81.2vw;
+}
+
+.staticProducts table thead tr {
+    font-size: 14px;
+}
+
+.staticProductsInput {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.staticProductsInput input {
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    outline: none;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 36vw;
+}
+
+.fields label {
+    font-weight: bold;
+    color: #6439ff;
+}
+
+.information {
+    display: flex;
+    row-gap: 20px;
+    justify-content: space-between;
+}

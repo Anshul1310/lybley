@@ -1,0 +1,76 @@
+.newsPage {
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.news {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.news table img {
+    height: 80px;
+    width: 97px;
+    border-radius: 10px;
+}
+
+.news table {
+    text-align: center;
+    background: #f3f3f3;
+    border: 1px solid #bbb;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 81.2vw;
+}
+
+.news table thead tr {
+    font-size: 14px;
+}
+
+.addNewsBtn a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    background: #4747fd;
+    padding: 0.7rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.addNewsBtn {
+    align-self: center;
+}
+
+.addNewsBtn a:hover {
+    background-color: #0000fd;
+}
+
+.news_main {
+    display: flex;
+}
+
+.viewNewsHead {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.newsInput input,
+.newsInput textarea {
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    outline: none;
+}
+
+.newsInput {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
