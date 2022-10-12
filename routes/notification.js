@@ -2,7 +2,7 @@ const router = require("express").Router();
   var FCM = require('fcm-node');
   const Notification=require("../models/Notification");
 
-    var serverKey = 'AAAArsPB5ro:APA91bFDtLZ7v9qnfaJqfgKCg3l2-BtngzGAh89pEFO8mQ8t6zf4ocwrInK0AJjk1331-5m667oc0yQ4IKrt0z7O5JoXmLX4xVNjN6CwKTpfwusKJTNyLZib1lJiLbzZ7hBelSdeQSqr';
+    var serverKey = 'AAAA6cImtQQ:APA91bF7yvHb9UUP4rQSNzmnIdGDDHnS8K4xWWwhcoe2kfwcsBShrlf9knU-vVXCV3AxCqBTtqz3poVvQkTntkgFptCqhNqKOvx47aHWqbc8zg48pFSxsXJW-IzHzSBNU8IZcX96Ovmw';
     var fcm = new FCM(serverKey);
 
     router.post("/send",async (req,res)=>{

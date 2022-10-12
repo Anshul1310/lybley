@@ -96,11 +96,12 @@ try{
 
 router.post("/update",async (req,res)=>{
 	try{
-		console.log(req.body);
+
 		const products=await Seller.updateOne({_id:req.body.id},
 			{
 				"$set":{...req.body}
 			});
+		console.log(products)
 		res.status(200).json(products);
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})

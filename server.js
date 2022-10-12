@@ -11,6 +11,7 @@ const notification=require("./routes/notification");
 const product=require("./routes/product");
 const transaction=require("./routes/transaction");
 const path=require("path");
+const newscategories=require("./routes/newscategories");
 
 const Settings=require("./routes/settings");
 
@@ -35,7 +36,7 @@ mongoose.connect("mongodb://localhost:27017/ecom_app",{
 });
 
 const corsOption = {
-    origin: ['http://localhost:80'],
+    origin: ['http://localhost:3000'],
     credentials:true,
     methods:["GET","POST","PUT","DELETE"]
 };
@@ -56,6 +57,7 @@ app.use("/api/product-price", product_price);
 app.use("/api/product", product);
 app.use("/api/categories", category);
 app.use("/api/news", news);
+app.use("/api/newscategories", newscategories);
 app.use("/api/stores", store);
 app.use("/api/transaction", transaction)
 app.use("/api/notification", notification);
