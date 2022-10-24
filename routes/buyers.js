@@ -1,18 +1,47 @@
 const router = require("express").Router();
 const Buyer=require("../models/Buyer");
 const Settings =require("../models/Settings");
+const Jimp=require("jimp");
+const path=require("path");
 
 router.post("/add",async (req,res)=>{
 	try{
-		const {organization, address, phone,email, additional_number,status, type, tin, name, contact_person, level}=req.body;
+		const {organization, address, phone,email,shopInner, shopOuter,  additional_number,status, type, tin, name, contact_person, level}=req.body;
 		const obj=await Settings.findOne();
 			const number=obj.buyerIndex;
 			await Settings.updateOne({
 				buyerIndex:number+1
 			})
 		const idIn="WB"+number;
-		const buyer=await Buyer.create({organization, _id:idIn,status, address, phone,email, additional_number, type, tin, name, contact_person, level});
-		console.log(buyer);
+
+
+		const bufferInner = Buffer.from(
+            shopInner.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
+            'base64'
+	    	);
+			const bufferOuter = Buffer.from(
+				shopOuter.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
+				'base64'
+				);
+
+			 const imagePathInner = `${Date.now()}-${Math.round(
+	            Math.random() * 1e9
+	        )}.png`;
+			const imagePathOuter = `${Date.now()}-${Math.round(
+	            Math.random() * 1e9
+	        )}.png`;
+
+			const jimpResInner=await Jimp.read(bufferInner);
+			const jimpResOuter=await Jimp.read(bufferOuter);
+
+	    	jimpResInner.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePathInner}`));
+			jimpResOuter.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePathOuter}`));
+
+	   		const avatarInner=`/images/${imagePathInner}`;
+			const avatarOuter=`/images/${imagePathOuter}`;
+	   		
+
+		const buyer=await Buyer.create({organization, shopInner:avatarInner, shopOuter:avatarOuter, _id:idIn,status, address, phone,email, additional_number, type, tin, name, contact_person, level});
 		res.status(200).json(buyer);
 	}catch(er){
 		res.status(404).json("Something went wrong")

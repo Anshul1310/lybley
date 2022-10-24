@@ -6,6 +6,7 @@ const schema=mongoose.Schema({
 	description:String,
 	category:String,
 	image:String,
+	details:String,
 	store:String,
 	seller:String,
 	moq:Number,

@@ -6,6 +6,8 @@ const schema=mongoose.Schema({
 	phone:Number,
 	fcmToken:String,
 	email:String,
+	shopInner:String,
+	shopOuter:String,
 	uid:String,
 	status:{
 		type:String,
