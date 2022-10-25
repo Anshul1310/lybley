@@ -4,7 +4,8 @@ const Product =require("../models/Product");
 const Order=require("../models/Order");
 const Buyer=require("../models/Buyer");
 const Seller=require("../models/Seller");
-
+const Jimp=require("jimp");
+const path=require("path");
 
 router.post("/index/create",async (req, res)=>{
 	const settings=await Settings.create({})
@@ -89,7 +90,7 @@ router.get("/rate",async (req,res)=>{
 router.post("/banner",async (req,res)=>{
 	try{
 		console.log(req.body);
-		const banners=await Settings.updateOne({_id:"setingsOfTheApp"},{
+		const banners=await Settings.updateOne({
 		"$set":{
 			...req.body
 		}
@@ -106,6 +107,29 @@ router.get("/banner",async (req,res)=>{
 	try{
 		const banners=await Settings.findOne();
 		res.status(200).json(banners);
+	}catch(e){
+		res.status(400).json("err");
+		console.log(e)
+	}
+	
+
+})
+
+
+router.post("/upload",async (req,res)=>{
+	try{
+		const {image} =req.body;
+		const buffer = Buffer.from(
+            image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
+            'base64'
+    	);
+		 const imagePath = `${Date.now()}-${Math.round(
+            Math.random() * 1e9
+        )}.png`;
+		const jimpRes=await Jimp.read(buffer);
+    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+   		const avatar=`/images/${imagePath}`;	
+		res.status(200).json(avatar);
 	}catch(e){
 		res.status(400).json("err");
 		console.log(e)
