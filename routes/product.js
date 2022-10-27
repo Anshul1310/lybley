@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Product =require("../models/Product");
 const Jimp=require("jimp");
 const path=require("path");
+const { json } = require("express");
 
 router.post("/checkOrders",(req,res)=>{
 	console.log(req.body);
@@ -20,7 +21,7 @@ router.post("/add",async (req,res)=>{
             Math.random() * 1e9
         )}.png`;
 		  const jimpRes=await Jimp.read(buffer);
-    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+    	jimpRes.write(path.resolve(__dirname, `../images/${imagePath}`));
    		const avatar=`/images/${imagePath}`;	
 		const product=await Product.create({...req.body, image:avatar});
 		res.status(200).json(product);
@@ -43,7 +44,7 @@ router.post("/update",async (req,res)=>{
 	            Math.random() * 1e9
 	        )}.png`;
 			  const jimpRes=await Jimp.read(buffer);
-	    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+	    	jimpRes.write(path.resolve(__dirname, `../images/${imagePath}`));
 	   		const avatar=`/images/${imagePath}`;
 	   		const product=await Product.updateOne({_id:req.body.id},{
 	   			"$set":{
@@ -63,6 +64,7 @@ router.post("/update",async (req,res)=>{
 		res.status(400).json({msg:"error"})
 	}
 })
+
 
 
 router.post("/product/:id",async (req,res)=>{
@@ -87,7 +89,6 @@ router.get("/recent",async (req,res)=>{
 })
 
 
-
 router.post("/delete",async (req,res)=>{
 	try{
 		const product=await Product.deleteOne({_id:req.body.id});
@@ -110,16 +111,35 @@ router.get("/all",async (req,res)=>{
 })
 
 
+
+
 router.get("/:category",async (req,res)=>{
 	try{
 		console.log(req.params.category);
 		const product=await Product.find({category:req.params.category}).sort("createdAt : -1");
-		console.log(req.params.category)
 		res.status(200).json(product);
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})
 		console.log(er);
 	}
+})
+
+router.post("/favourites", async (req, res) => {
+	try{
+		const arr=req.query.list.split(",");
+		const product=await Product.find(
+			// Find documents matching any of these values
+			{$or:[
+				{"_id":{"$in":arr}},
+				{"_id":{"$in":arr}}
+			]}
+		)
+		res.status(200).json(product);
+	}catch(e){
+		res.status(400).json("err");
+		console.log(e)
+	}
+	
 })
 
 

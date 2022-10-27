@@ -127,7 +127,7 @@ router.post("/upload",async (req,res)=>{
             Math.random() * 1e9
         )}.png`;
 		const jimpRes=await Jimp.read(buffer);
-    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+    	jimpRes.write(path.resolve(__dirname, `../images/${imagePath}`));
    		const avatar=`/images/${imagePath}`;	
 		res.status(200).json(avatar);
 	}catch(e){

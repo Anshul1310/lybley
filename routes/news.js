@@ -16,7 +16,7 @@ router.post("/add",async (req,res)=>{
         )}.png`;
 
 		const jimpRes=await Jimp.read(buffer);
-    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+    	jimpRes.write(path.resolve(__dirname, `../images/${imagePath}`));
    		
    		const avatar=`/images/${imagePath}`;
 
@@ -64,7 +64,7 @@ router.post("/update",async (req,res)=>{
 	        )}.png`;
 
 			const jimpRes=await Jimp.read(buffer);
-	    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+	    	jimpRes.write(path.resolve(__dirname, `../images/${imagePath}`));
 	   		
 	   		const avatar=`/images/${imagePath}`;
 	   		const product=await News.updateOne({_id:req.body.id},{
