@@ -95,6 +95,7 @@ router.get("/all",async (req,res)=>{
 
 router.post("/delete",async (req,res)=>{
 	try{
+		console.log(req.body.id)
 		const category=await Category.deleteOne({name:req.body.id});
 
 		res.status(200).json(category);
