@@ -10,6 +10,7 @@ const schema=mongoose.Schema({
 	store:String,
 	seller:String,
 	moq:Number,
+	brand:String,
 	stock:Number,
 	price:Number,
 	slashedPrice:Number,

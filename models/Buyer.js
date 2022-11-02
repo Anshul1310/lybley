@@ -7,8 +7,11 @@ const schema=mongoose.Schema({
 	fcmToken:String,
 	email:String,
 	shopInner:String,
+	dob:String,
+	sales:String,
 	shopOuter:String,
 	uid:String,
+	gst:String,
 	status:{
 		type:String,
 		default:"pending"
@@ -16,7 +19,7 @@ const schema=mongoose.Schema({
 	_id:String,
 	additional_number:Number,
 	type:String,
-	tin:String,
+	pan:String,
 	name:String,
 	contact_person:String,
 	level:{

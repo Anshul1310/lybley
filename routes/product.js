@@ -33,8 +33,8 @@ router.post("/add",async (req,res)=>{
 
 router.post("/update",async (req,res)=>{
 	try{
-		const {image} =req.body;
 		console.log(req.body);
+		const {image} =req.body;
 		if(req.body.isChanged){
 			const buffer = Buffer.from(
             image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
@@ -46,17 +46,28 @@ router.post("/update",async (req,res)=>{
 			  const jimpRes=await Jimp.read(buffer);
 	    	jimpRes.write(path.resolve(__dirname, `../images/${imagePath}`));
 	   		const avatar=`/images/${imagePath}`;
-	   		const product=await Product.updateOne({_id:req.body.id},{
+			 
+			   const options = {
+				upsert: true,
+				new: true,
+				setDefaultsOnInsert: true
+			};
+	   		const product=await Product.findByIdAndUpdate({_id:req.body.id},{
 	   			"$set":{
 	   				...req.body, image:avatar
 	   			}
-	   		})
+	   		},options)
 	   		console.log(product)
 	   		res.status(200).json(product);
 		}else{
-			const product=await Product.updateOne({_id:req.body.id},{
+			const options = {
+				upsert: true,
+				new: true,
+				setDefaultsOnInsert: true
+			};
+			const product=await Product.findByIdAndUpdate({_id:req.body.id},{
 				"$set":{...req.body}
-			})
+			},options)
 			res.status(200).json(product);
 		}
 	}catch(e){
