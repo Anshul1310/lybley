@@ -10,6 +10,8 @@ const buyers=require("./routes/buyers");
 const notification=require("./routes/notification");
 const product=require("./routes/product");
 const transaction=require("./routes/transaction");
+const sell=require("./routes/sell");
+
 const path=require("path");
 const newscategories=require("./routes/newscategories");
 
@@ -59,6 +61,8 @@ app.use("/api/categories", category);
 app.use("/api/news", news);
 app.use("/api/newscategories", newscategories);
 app.use("/api/stores", store);
+app.use("/api/sell", sell);
+
 app.use("/api/transaction", transaction)
 app.use("/api/notification", notification);
 app.use("/api/order",order);

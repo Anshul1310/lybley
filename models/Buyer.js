@@ -20,6 +20,7 @@ const schema=mongoose.Schema({
 	additional_number:Number,
 	type:String,
 	pan:String,
+	gender:String,
 	name:String,
 	contact_person:String,
 	level:{
