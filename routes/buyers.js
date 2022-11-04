@@ -82,6 +82,46 @@ router.get("/search/:query",async (req,res)=>{
 	
 })
 
+router.post("/updateBusinessInfo",async (req,res)=>{
+	try{
+		const options = {
+			upsert: true,
+			new: true,
+			setDefaultsOnInsert: true
+	};
+		const {dob, gender, name,type, sales,id}=req.body;
+		const buyer=await Buyer.findByIdAndUpdate({_id:id},{
+			"$set":{
+				type, sales
+			}
+		}, options);
+		res.status(200).json(buyer);
+	}catch(er){ 
+		res.status(404).json({msg:"Something went wrong"})
+		console.log(er);
+	}
+})
+
+
+router.post("/updateProfileInfo",async (req,res)=>{
+	try{
+		const options = {
+			upsert: true,
+			new: true,
+			setDefaultsOnInsert: true
+	};
+		const {dob, gender, name,type, sales,id}=req.body;
+		const buyer=await Buyer.findByIdAndUpdate({_id:id},{
+			"$set":{
+				dob, gender, name
+			}
+		}, options);
+		res.status(200).json(buyer);
+	}catch(er){ 
+		res.status(404).json({msg:"Something went wrong"})
+		console.log(er);
+	}
+})
 
 
 
