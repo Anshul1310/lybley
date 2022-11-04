@@ -18,8 +18,9 @@ router.post("/add",async (req,res)=>{
 				const {seller, price, quantity, productId}=value;
 				const productTemp=await Product.findOne({_id:productId});
 				const quant=(productTemp.stock)-quantity;
+				const sold=(productTemp.sold)+quantity;
 				const product=await Product.updateOne({_id:productId},{
-					"$set":{stock:quant}
+					"$set":{stock:quant, sold:sold}
 				})
 			})
 		res.status(200).json(order);

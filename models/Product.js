@@ -8,6 +8,7 @@ const schema=mongoose.Schema({
 	image:String,
 	details:String,
 	store:String,
+	sold:{ type: Number, default: 0 },//to store how much times the product is sold
 	seller:String,
 	moq:Number,
 	brand:String,

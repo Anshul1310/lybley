@@ -127,6 +127,19 @@ router.get("/deals", async(req,res)=>{
 
 })
 
+router.get("/bestSelling", async(req,res)=>{
+	try{
+		const product = await Product.find().sort({"_id":-1});
+		product.sort(dynamicSort("sold"))
+		res.status(200).json(product.slice(0,6));
+	}catch(e){
+		console.log(e)
+		res.status(400).json(e);
+	}
+	
+
+})
+
 function dynamicSort(property) {
     var sortOrder = -1;
     if(property[0] === "-") {
@@ -152,6 +165,25 @@ router.get("/all",async (req,res)=>{
 	}
 })
 
+router.get("/brand",async (req,res)=>{
+	try{
+		const product=await Product.find().sort({"_id":-1});
+		const mySet = new Set();
+		product.forEach(async (item)=>{
+			mySet.add(item.brand);
+			
+		})
+		const jk=[];
+		for(let i=0;i<mySet.size;i++){
+			jk[i]=Array.from(mySet)[i];
+		}
+		res.status(200).json(jk)
+		
+	}catch(e){
+		res.status(400).json({msg:"error"});
+		console.log(e);
+	}
+})
 
 router.get("/:category",async (req,res)=>{
 	try{

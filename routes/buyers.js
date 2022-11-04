@@ -92,7 +92,7 @@ router.post("/update",async (req,res)=>{
 			new: true,
 			setDefaultsOnInsert: true
 		};
-		const buyer=await Buyer.findByIdAndUpdate({_id:req.body.id},{
+		const buyer=await Buyer.findByIdAndUpdate({_id:req.body._id},{
 			"$set":{
 				...req.body
 			}
