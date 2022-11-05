@@ -12,11 +12,11 @@ router.post("/index/create",async (req, res)=>{
 
 })
 
-router.post("/rate",async (req, res)=>{
+router.post("/zone",async (req, res)=>{
 	try{
 		console.log(req.body);
 const settings=await Settings.updateOne({"_id":"setingsOfTheApp"},{
-		"$set":{rate:req.body.rate}
+		"$set":{zone:req.body.zone}
 	})
 	res.status(200).json(settings);
 	}catch(e){
@@ -82,9 +82,9 @@ router.get("/cards",async(req,res)=>{
 
 })
 
-router.get("/rate",async (req,res)=>{
+router.get("/zone",async (req,res)=>{
 	const setting=await Settings.findOne();
-	res.status(200).json(setting.rate);
+	res.status(200).json(setting.zone);
 })
 
 router.post("/banner",async (req,res)=>{

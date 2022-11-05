@@ -12,6 +12,7 @@ const schema=mongoose.Schema({
 		type:Number,
 		default:1
 	},
+	zone:String,
 	rate:{
 		type:Number,
 		

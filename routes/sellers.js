@@ -5,7 +5,7 @@ const Settings =require("../models/Settings");
 router.post("/add",async (req,res)=>{
 	try{
 		console.log(req.body);
-		const {name, gender,region, zone, woreda,status, kebele, phone,additional_number, email, level, tin,age, type, bookNumber,distanceDetail}=req.body;
+		const {name, gender,region, zone, category,woreda,status, kebele, phone,additional_number, email, level, tin,age, type, bookNumber,distanceDetail}=req.body;
 		const obj=await Settings.findOne();
 		const number=obj.sellerIndex;
 		await Settings.updateOne({
@@ -14,7 +14,7 @@ router.post("/add",async (req,res)=>{
 		const idIn="WS"+number;
 		const password=phone;
 		const seller=await Seller.create({
-			name, gender,status,region,password, _id:idIn, zone, woreda, kebele,additional_number:additional_number, phone, email, level, tin,age, type, bookNumber,distanceDetail
+			name, gender,status,region,category,password, _id:idIn, zone, woreda, kebele,additional_number:additional_number, phone, email, level, tin,age, type, bookNumber,distanceDetail
 		});
 		res.status(200).json({msg:"success"});
 	}catch(er){

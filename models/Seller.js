@@ -11,6 +11,7 @@ const schema=mongoose.Schema({
 	woreda:String,
 	kebele:String,
 	password:String,
+	category:String,
 	phone:Number,
 	status:{
 		type:String,
