@@ -15,8 +15,8 @@ router.post("/add",async (req,res)=>{
             Math.random() * 1e9
         )}.png`;
 		 const jimpRes=await Jimp.read(buffer);
-    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
-   		const avatar=`/images/${imagePath}`;		
+		 jimpRes.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+		 const avatar=`/images/${imagePath}`;		
 		const newscategories=await NewsCategories.create({name, image:avatar} );
 		res.status(200).json(newscategories);
 
@@ -46,8 +46,8 @@ router.post("/update",async (req,res)=>{
             Math.random() * 1e9
         )}.png`;
 		 const jimpRes=await Jimp.read(buffer);
-    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
-   		const avatar=`/images/${imagePath}`;
+		 jimpRes.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+		 const avatar=`/images/${imagePath}`;
    		console.log(avatar);
    		const newscategories=await NewsCategories.updateOne({_id:req.body.id},{
 		"$set":{
@@ -64,8 +64,8 @@ const buffer = Buffer.from(
             Math.random() * 1e9
         )}.png`;
 		 const jimpRes=await Jimp.read(buffer);
-    	jimpRes.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
-   		const avatar=`/images/${imagePath}`;
+		 jimpRes.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+		 const avatar=`/images/${imagePath}`;
    		
    		const newscategories=await NewsCategories.updateOne({_id:req.body.id},{
 		"$set":{

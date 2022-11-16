@@ -34,8 +34,8 @@ router.post("/add",async (req,res)=>{
 				const jimpResInner=await Jimp.read(bufferInner);
 				const jimpResOuter=await Jimp.read(bufferOuter);
 	
-				jimpResInner.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePathInner}`));
-				jimpResOuter.resize(100, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePathOuter}`));
+				jimpResInner.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePathInner}`));
+				jimpResOuter.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePathOuter}`));
 	
 				   const avatarInner=`/images/${imagePathInner}`;
 				const avatarOuter=`/images/${imagePathOuter}`;

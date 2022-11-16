@@ -21,7 +21,7 @@ router.post("/add",async (req,res)=>{
             Math.random() * 1e9
         )}.png`;
 		  const jimpRes=await Jimp.read(buffer);
-    	jimpRes.write(path.resolve(__dirname, `../images/${imagePath}`));
+    	jimpRes.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
    		const avatar=`/images/${imagePath}`;	
 		const product=await Product.create({...req.body, image:avatar});
 		res.status(200).json(product);
@@ -43,8 +43,8 @@ router.post("/update",async (req,res)=>{
 	            Math.random() * 1e9
 	        )}.png`;
 			  const jimpRes=await Jimp.read(buffer);
-	    	jimpRes.write(path.resolve(__dirname, `../images/${imagePath}`));
-	   		const avatar=`/images/${imagePath}`;
+			  jimpRes.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+			  const avatar=`/images/${imagePath}`;
 			 
 			   const options = {
 				upsert: true,
