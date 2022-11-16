@@ -66,11 +66,11 @@ router.get("/info",async (req,res)=>{
 router.get("/cards",async(req,res)=>{
 	const setting=await Settings.findOne();
 
-	const buyerNo=setting.buyerIndex;
+	const buyerNo=await Buyer.countDocuments();
 
 	const orderNo=setting.orderIndex;
 
-	const productNo=await Product.find().countDocuments();
+	const productNo=await Product.countDocuments();
 	const earning=await Order.find();
 	
 	let totalPrice=1;

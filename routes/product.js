@@ -26,8 +26,7 @@ router.post("/add",async (req,res)=>{
 		const product=await Product.create({...req.body, image:avatar});
 		res.status(200).json(product);
 	}catch(e){
-		console.log(e);
-		res.status(400).json("error")
+		res.status(400).json(e.message)
 	}
 })
 
@@ -72,7 +71,7 @@ router.post("/update",async (req,res)=>{
 		}
 	}catch(e){
 		console.log(e);
-		res.status(400).json({msg:"error"})
+		res.status(400).json(e.message);
 	}
 })
 

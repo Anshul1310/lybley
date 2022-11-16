@@ -1,9 +1,48 @@
 const Order=require("../models/Order");
-const router=require("express").Router();
 const Settings =require("../models/Settings");
 const Transaction =require("../models/Transaction");
 const Product =require("../models/Product");
+const router = require("express").Router();
+  var FCM = require('fcm-node');
+  const Notification=require("../models/Notification");
 
+    var serverKey = 'AAAA6cImtQQ:APA91bF7yvHb9UUP4rQSNzmnIdGDDHnS8K4xWWwhcoe2kfwcsBShrlf9knU-vVXCV3AxCqBTtqz3poVvQkTntkgFptCqhNqKOvx47aHWqbc8zg48pFSxsXJW-IzHzSBNU8IZcX96Ovmw';
+    var fcm = new FCM(serverKey);
+
+
+
+const sendOrderNotification=(buyer)=>{
+	var message = {
+		to:"/topics/admin",
+			notification: {
+				title: "Order Notification",
+				body: "New Order Received from "+buyer
+			},
+	 };
+
+fcm.send(message, async function (err, response) {
+if (err) {
+	console.log("Something has gone wrong!"+err);
+	console.log("Respponse:! "+response);
+	res.status(400).json("error")
+} else {
+	console.log(response)
+	// showToast("Successfully sent with response");
+	try{
+		 const notification=await Notification.create({
+			topic:req.body.topic,
+			body:req.body.body,
+			title:req.body.title
+		})
+		res.status(200).json(notification)
+	}catch(e){
+		res.status(400).json("error")
+	}
+
+}
+
+});
+}
 router.post("/add",async (req,res)=>{
 	try{
 		console.log(req.body);
@@ -23,6 +62,7 @@ router.post("/add",async (req,res)=>{
 					"$set":{stock:quant, sold:sold}
 				})
 			})
+			sendOrderNotification(req.body.buyer);
 		res.status(200).json(order);
 	}catch(er){
 		console.log(er);
