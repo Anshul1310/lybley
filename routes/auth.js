@@ -1,10 +1,9 @@
 const router=require("express").Router();
 const crypto=require("crypto");
-require('dotenv').config();
-
+require('dotenv').config()
 
 const twilio=require("twilio")("ACe81b3e9154a9f3dac04677603ddac4dd",
-	"580bf5dc2e2ad8565848cf23bd88b859",{lazyLoading:true});
+	"4b193a95e1b3f4a430bc62c9a8598f06",{lazyLoading:true});
 
 router.post("/generate-otp/:phone",(req,res)=>{
 	try{
@@ -17,6 +16,7 @@ router.post("/generate-otp/:phone",(req,res)=>{
 		// for production just remove from res send and uncomment send sms
 		res.status(200).json({hash:`${hash}.${expiresIn}`});
 	}catch(e){
+        console.log(e)
 		res.status(400).json({msg:"Netwok Connection Error2"});
 	}
 	
@@ -54,6 +54,7 @@ const createHashedString=(data)=>{
 }
 
 const sendOtp=async (phone,otp)=>{
+    console.log(phone)
 	return await twilio.messages.create({
 		to:phone,
 		from:"+18165788289",
