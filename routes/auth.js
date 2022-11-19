@@ -41,7 +41,7 @@ router.post("/verify-otp/:details",async (req,res)=>{
 		}
 		res.status(200).json({status:"success"});
 	}catch(e){
-		res.status(400).json({msg:"Netwok Connection Error"});
+		res.status(400).json({status:"error"});
 		console.log(e);
 	}
 	

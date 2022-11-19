@@ -50,7 +50,7 @@ router.get("/find/phone/:phone",async (req,res)=>{
 
 router.post("/login",async (req,res)=>{
 	try{
-		const seller=await Seller.findOne({password:req.body.password, phone:req.body.email});
+		const seller=await Seller.findOne({phone:req.body.phone});
 		if(seller==null){
 			res.status(404).json("Invalid Credentials");
 		}else{
