@@ -11,6 +11,7 @@ const notification=require("./routes/notification");
 const product=require("./routes/product");
 const transaction=require("./routes/transaction");
 const sell=require("./routes/sell");
+const auth=require("./routes/auth");
 
 const path=require("path");
 const newscategories=require("./routes/newscategories");
@@ -60,6 +61,8 @@ app.use("/api/product", product);
 app.use("/api/categories", category);
 app.use("/api/news", news);
 app.use("/api/newscategories", newscategories);
+app.use("/api/auth", auth);
+
 app.use("/api/stores", store);
 app.use("/api/sell", sell);
 
