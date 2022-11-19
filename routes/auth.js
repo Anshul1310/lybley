@@ -25,6 +25,7 @@ router.post("/generate-otp/:phone",(req,res)=>{
 
 router.post("/verify-otp/:details",async (req,res)=>{
 	try{
+    console.log(req.params)
 		const details=req.params.details.split("&");
 		const phone=details[0];
 		const hash=details[1];
