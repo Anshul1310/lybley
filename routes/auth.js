@@ -8,7 +8,7 @@ const twilio=require("twilio")("ACe81b3e9154a9f3dac04677603ddac4dd",
 router.post("/generate-otp/:phone",(req,res)=>{
 	try{
 		const phone =req.params.phone;
-		const otp=crypto.randomInt(1000,9999);
+		const otp=crypto.randomInt(100000,999999);
 		const maxTime=1000*60*2;
 		const expiresIn=Date.now()+maxTime;
 		const hash=createHashedString(`${phone}.${otp}.${expiresIn}`);
