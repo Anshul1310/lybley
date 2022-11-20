@@ -127,7 +127,7 @@ router.post("/update",async (req,res)=>{
 
 		const buyer=await Buyer.findOne({_id:req.body.buyer});
 		console.log(buyer);
-		sendOrderNotification(req.body.orderId, buyer.status, buyer.fcmToken);
+		sendOrderNotification(req.body.orderId, req.body.status, buyer.fcmToken);
 
 		if(req.body.status=="delivered"){
 			req.body.items.map(async (value)=>{
