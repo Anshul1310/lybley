@@ -4,7 +4,10 @@ const schema=mongoose.Schema({
 	organization:String,
 	address:String,
 	phone:Number,
-	fcmToken:String,
+	fcmToken:{
+		type:String,
+		default:""
+	},
 	email:String,
 	shopInner:String,
 	dob:String,

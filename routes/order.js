@@ -117,20 +117,17 @@ router.get("/recent",async (req,res)=>{
 
 router.post("/update",async (req,res)=>{
 	try{
-		console.log(req.body)
-		const order=await Order.updateOne({orderId:req.body.orderId},{
+		await Order.updateOne({orderId:req.body.orderId},{
 			"$set":{
 				...req.body
 			}
 		});
-		console.log(req.body)
 
 		const buyer=await Buyer.findOne({_id:req.body.buyer});
-		console.log(buyer);
 		sendOrderNotification(req.body.orderId, req.body.status, buyer.fcmToken);
-
+		const order=await Order.findOne({_id:req.body.orderId});
 		if(req.body.status=="delivered"){
-			req.body.items.map(async (value)=>{
+			order._doc.map(async (value)=>{
 				const {seller, price, quantity, productId}=value;
 
 				const  transaction=await Transaction.create({
