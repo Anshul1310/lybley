@@ -117,6 +117,7 @@ router.get("/recent",async (req,res)=>{
 
 router.post("/update",async (req,res)=>{
 	try{
+		console.log(req.body)
 		const order=await Order.updateOne({orderId:req.body.orderId},{
 			"$set":{
 				...req.body
@@ -124,7 +125,7 @@ router.post("/update",async (req,res)=>{
 		});
 		const buyer=await Buyer.findOne({_id:req.body.buyer});
 		console.log(buyer);
-		sendOrderNotification(buyer.orderId, buyer.status, buyer.fcmToken);
+		sendOrderNotification(req.body.orderId, buyer.status, buyer.fcmToken);
 
 		if(req.body.status=="delivered"){
 			req.body.items.map(async (value)=>{
