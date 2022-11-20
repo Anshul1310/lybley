@@ -128,7 +128,7 @@ router.post("/update",async (req,res)=>{
 		const order=await Order.findOne({orderId:req.body.orderId});
 		console.log(order)
 		if(req.body.status=="delivered"){
-			order._doc.map(async (value)=>{
+			order._doc.items.map(async (value)=>{
 				const {seller, price, quantity, productId}=value;
 
 				const  transaction=await Transaction.create({
