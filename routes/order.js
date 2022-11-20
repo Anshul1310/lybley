@@ -120,10 +120,10 @@ router.post("/update",async (req,res)=>{
 
 			})
 
-			res.status(200).json("success");
+			res.status(200).json(order);
 
 		}else{
-			res.status(200).json("success");
+			res.status(200).json(order);
 
 		}
 	}catch(er){
