@@ -23,24 +23,6 @@ const sendOrderNotification=(orderId, status, fcmToken)=>{
 	 };
 
 fcm.send(message, async function (err, response) {
-if (err) {
-	console.log("Something has gone wrong!"+err);
-	console.log("Respponse:! "+response);
-} else {
-	console.log(response)
-	// showToast("Successfully sent with response");
-	try{
-		 const notification=await Notification.create({
-			topic:req.body.topic,
-			body:req.body.body,
-			title:req.body.title
-		})
-	}catch(e){
-		console.log("notification error: " + e);
-	}
-
-}
-
 });
 }
 router.post("/add",async (req,res)=>{
