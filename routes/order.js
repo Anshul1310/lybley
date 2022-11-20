@@ -123,6 +123,8 @@ router.post("/update",async (req,res)=>{
 				...req.body
 			}
 		});
+		console.log(req.body)
+
 		const buyer=await Buyer.findOne({_id:req.body.buyer});
 		console.log(buyer);
 		sendOrderNotification(req.body.orderId, buyer.status, buyer.fcmToken);
