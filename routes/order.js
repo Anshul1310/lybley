@@ -35,9 +35,8 @@ if (err) {
 			body:req.body.body,
 			title:req.body.title
 		})
-		res.status(200).json(notification)
 	}catch(e){
-		res.status(400).json("error")
+		console.log("notification error: " + e);
 	}
 
 }
