@@ -123,11 +123,12 @@ router.post("/update",async (req,res)=>{
 			res.status(200).json("success");
 
 		}else{
-			res.status(200).json(order);
+			res.status(200).json("success");
+
 		}
 	}catch(er){
 		console.log(er);
-		res.status(400).json({msg:"error"});
+		res.status(400).json("error");
 	}
 })
 
