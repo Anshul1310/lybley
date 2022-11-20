@@ -1,6 +1,8 @@
 const Order=require("../models/Order");
 const Settings =require("../models/Settings");
 const Transaction =require("../models/Transaction");
+const Buyer=require("../models/Buyer");
+
 const Product =require("../models/Product");
 const router = require("express").Router();
   var FCM = require('fcm-node');
@@ -11,12 +13,12 @@ const router = require("express").Router();
 
 
 
-const sendOrderNotification=(buyer)=>{
+const sendOrderNotification=(orderId, status, fcmToken)=>{
 	var message = {
-		to:"/topics/admin",
+		to:fcmToken,
 			notification: {
 				title: "Order Notification",
-				body: "New Order Received from "+buyer
+				body: "Your order("+orderId+") from Lybley is "+status
 			},
 	 };
 
@@ -24,7 +26,6 @@ fcm.send(message, async function (err, response) {
 if (err) {
 	console.log("Something has gone wrong!"+err);
 	console.log("Respponse:! "+response);
-	res.status(400).json("error")
 } else {
 	console.log(response)
 	// showToast("Successfully sent with response");
@@ -62,7 +63,6 @@ router.post("/add",async (req,res)=>{
 					"$set":{stock:quant, sold:sold}
 				})
 			})
-			sendOrderNotification(req.body.buyer);
 		res.status(200).json(order);
 	}catch(er){
 		console.log(er);
@@ -117,21 +117,15 @@ router.get("/recent",async (req,res)=>{
 
 router.post("/update",async (req,res)=>{
 	try{
-		console.log(req.body);
-		// console.log(req.body);
-		// const obj=await Settings.findOne();
-		// const number=obj.orderIndex;
-		// await Settings.updateOne({
-		// 	orderIndex:number+1
-		// })
-		// const orderNumber="Order Id: #"+number;
-		// const order=await Order.create({...req.body, orderId:orderNumber});
-		// res.status(200).json(order);
 		const order=await Order.updateOne({orderId:req.body.orderId},{
 			"$set":{
 				...req.body
 			}
 		});
+		const buyer=await Buyer.findOne({buyer:req.body.buyer});
+		console.log(buyer);
+		sendOrderNotification(buyer.orderId, buyer.status, buyer.fcmToken);
+
 		if(req.body.status=="delivered"){
 			req.body.items.map(async (value)=>{
 				const {seller, price, quantity, productId}=value;
@@ -142,12 +136,8 @@ router.post("/update",async (req,res)=>{
 				type:"credit",
 				})
 
-				// const productTemp=await Product.findOne({_id:productId});
-				// const quant=(productTemp.stock)-quantity;
-				// const product=await Product.updateOne({_id:productId},{
-				// 	"$set":{stock:quant}
-				// })
 			})
+
 			res.status(200).json("success");
 
 		}else{
