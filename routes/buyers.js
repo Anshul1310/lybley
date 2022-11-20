@@ -127,11 +127,32 @@ router.post("/updateProfileInfo",async (req,res)=>{
 
 router.post("/update",async (req,res)=>{
 	try{
-		
+		const options = {
+			upsert: true,
+			new: true,
+			setDefaultsOnInsert: true
+		};
 		const buyer=await Buyer.findByIdAndUpdate({_id:req.body.id},{
 			"$set":{
 				...req.body
 			}
+		}, options);
+		res.status(200).json(buyer);
+	}catch(er){
+		res.status(404).json({msg:"Something went wrong"})
+		console.log(er);
+	}
+})
+
+router.post("/updateToken",async (req,res)=>{
+	try{
+		const options = {
+			upsert: true,
+			new: true,
+			setDefaultsOnInsert: true
+		};
+		const buyer=await Buyer.findByIdAndUpdate({_id:req.body.id},{
+			fcmToken:req.body.fcmToken
 		}, options);
 		res.status(200).json(buyer);
 	}catch(er){
