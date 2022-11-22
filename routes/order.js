@@ -25,7 +25,7 @@ const sendOrderNotification=(orderId, status, fcmToken)=>{
 	 console.log(message);
 fcm.send(message, async function (err, response) {
 	console.log(response);
-	res.status(200).json(order);
+	res.status(200).json("success");
 
 });
 }
