@@ -23,8 +23,25 @@ const sendOrderNotification=(orderId, status, fcmToken)=>{
 	 };
 
 fcm.send(message, async function (err, response) {
+	if(!err){
+		next();
+	}
 });
 }
+
+const sendOrderNotificationAdmin=(orderId)=>{
+	var message = {
+		to:fcmToken,
+			notification: {
+				title: "Order Notification",
+				body: "Your order("+orderId+") from Lybley is "+status
+			},
+	 };
+
+fcm.send(message, async function (err, response) {
+});
+}
+
 router.post("/add",async (req,res)=>{
 	try{
 		console.log(req.body);

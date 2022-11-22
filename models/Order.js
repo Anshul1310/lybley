@@ -25,6 +25,9 @@ const schema=mongoose.Schema({
 	serviceFee:Number,
 	status:String,
 	address:String,
+	transactionId:{
+		type:String, default:""
+	},
 	paymentType:String,
 	orderId:String,
 },{ timestamps: true});
