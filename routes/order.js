@@ -133,13 +133,13 @@ router.post("/update",async (req,res)=>{
 				seller,
 				type:"credit",
 				})
-
 			})
-			sendOrderNotification(req.body.orderId, req.body.status, buyer.fcmToken);
 		}else{
 			res.status(200).json(order);
 
 		}
+		sendOrderNotification(req.body.orderId, req.body.status, buyer.fcmToken);
+
 	}catch(er){
 		console.log(er);
 		res.status(400).json("error");
