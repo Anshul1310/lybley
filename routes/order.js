@@ -21,12 +21,7 @@ const sendOrderNotification=(orderId, status, fcmToken)=>{
 				body: "Your order("+orderId+") from Lybley is "+status
 			},
 	 };
-
-	 console.log(message);
 fcm.send(message, async function (err, response) {
-	console.log(response);
-	res.status(200).json("success");
-
 });
 }
 
@@ -139,6 +134,7 @@ router.post("/update",async (req,res)=>{
 
 		}
 		sendOrderNotification(req.body.orderId, req.body.status, buyer.fcmToken);
+		res.status(200).json("success");
 
 	}catch(er){
 		console.log(er);
