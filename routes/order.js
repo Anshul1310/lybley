@@ -30,7 +30,7 @@ const sendOrderNotificationAdmin=(orderId)=>{
 		to:fcmToken,
 			notification: {
 				title: "Order Notification",
-				body: "Your order("+orderId+") from Lybley is "+status
+				body: "New order("+orderId+") received. "
 			},
 	 };
 
@@ -57,6 +57,8 @@ router.post("/add",async (req,res)=>{
 					"$set":{stock:quant, sold:sold}
 				})
 			})
+			sendOrderNotificationAdmin(orderNumber);
+
 		res.status(200).json(order);
 	}catch(er){
 		console.log(er);
