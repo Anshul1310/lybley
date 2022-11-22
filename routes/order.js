@@ -27,7 +27,7 @@ fcm.send(message, async function (err, response) {
 
 const sendOrderNotificationAdmin=(orderId)=>{
 	var message = {
-		to:fcmToken,
+		to:"/topics/admin",
 			notification: {
 				title: "Order Notification",
 				body: "New order("+orderId+") received. "
