@@ -23,6 +23,7 @@ const sendOrderNotification=(orderId, status, fcmToken)=>{
 	 };
 
 fcm.send(message, async function (err, response) {
+	console.log(response);
 	res.status(200).json(order);
 
 });
@@ -122,7 +123,6 @@ router.post("/update",async (req,res)=>{
 
 		const buyer=await Buyer.findOne({_id:req.body.buyer});
 		const order=await Order.findOne({orderId:req.body.orderId});
-		console.log(order)
 		if(req.body.status=="delivered"){
 			order._doc.items.map(async (value)=>{
 				const {seller, price, quantity, productId}=value;
@@ -135,8 +135,6 @@ router.post("/update",async (req,res)=>{
 
 			})
 			sendOrderNotification(req.body.orderId, req.body.status, buyer.fcmToken);
-
-
 		}else{
 			res.status(200).json(order);
 
