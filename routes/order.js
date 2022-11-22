@@ -23,10 +23,8 @@ const sendOrderNotification=(orderId, status, fcmToken)=>{
 	 };
 
 fcm.send(message, async function (err, response) {
-	if(!err){
-		res.status(200).json(order);
-		
-	}
+	res.status(200).json(order);
+
 });
 }
 
