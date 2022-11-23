@@ -34,7 +34,7 @@ router.get("/info",async (req,res)=>{
 			  {$project: {name: 1, month: {$month: '$createdAt'}}},
 			  {$match: {month: i}}
 			]);
-		const sellers=await Seller.aggregate([
+		const orders=await Order.aggregate([
 			  {$project: {name: 1, month: {$month: '$createdAt'}}},
 			  {$match: {month: i}}
 			]);
@@ -42,19 +42,19 @@ router.get("/info",async (req,res)=>{
 			  {$project: {name: 1, month: {$month: '$createdAt'}}},
 			  {$match: {month: i}}
 			]);
-		const data2={buyers:buyers.length, sellers:sellers.length, products:products.length}
+		const data2={buyers:buyers.length, orders:orders.length, products:products.length}
 		data.push(data2);
 		}
 		let products=[];
-		let sellers=[];
+		let orders=[];
 		let buyers=[];
 
 		for(let i=0;i<12;i++){
 			products.push(data[i].products);
-			sellers.push(data[i].sellers);
+			orders.push(data[i].sellers);
 			buyers.push(data[i].buyers);
 		}
-		res.status(200).json({products, sellers, buyers});
+		res.status(200).json({products, sellers:orders, buyers});
 	}catch(e){
 		console.log(e);
 	}
