@@ -101,7 +101,7 @@ router.get("/recent",async (req,res)=>{
 
 
 
-router.post("/search/:query",async (req,res)=>{
+router.get("/search/:query",async (req,res)=>{
 	var query=req.params.query;
 	console.log(query)
 	try{
