@@ -99,6 +99,22 @@ router.get("/recent",async (req,res)=>{
 })
 
 
+
+
+router.get("/search/:query",async (req,res)=>{
+	var query=req.params.query;
+	try{
+	const buyer=await Product.find({$or:[{_id:  {'$regex': query,$options:'i'}},{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{price:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1});
+	res.status(200).json(buyer);
+	}catch(er){
+		console.log(er);
+		res.send(er)
+	}
+	
+})
+
+
+
 router.post("/delete",async (req,res)=>{
 	try{
 		const product=await Product.deleteOne({_id:req.body.id});
