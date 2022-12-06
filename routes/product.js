@@ -244,7 +244,7 @@ router.get("/search/:query",async (req,res)=>{
 		if(query=="all"){
 			const buyer=await Product.find().limit(page*20);
 			res.status(200).json(buyer);
-		}else(){
+		}else{
 			const buyer=await Product.find({$or:[{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{details:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1}).limit(20*Number(page));
 			res.status(200).json(buyer);
 		}
