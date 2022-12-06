@@ -8,6 +8,23 @@ router.post("/checkOrders",(req,res)=>{
 	console.log(req.body);
 })
 
+router.post("/favourites", async (req, res) => {
+	try{
+		const arr=req.query.list.split(",");
+		const product=await Product.find(
+			// Find documents matching any of these values
+			{$or:[
+				{"_id":{"$in":arr}},
+				{"_id":{"$in":arr}}
+			]}
+		)
+		res.status(200).json(product);
+	}catch(e){
+		res.status(400).json("err");
+		console.log(e)
+	}
+	
+})
 
 
 router.post("/add",async (req,res)=>{
@@ -101,18 +118,7 @@ router.get("/recent",async (req,res)=>{
 
 
 
-router.get("/search/:query",async (req,res)=>{
-	var query=req.params.query;
-	console.log(query)
-	try{
-	const buyer=await Product.find({$or:[{_id:  {'$regex': query,$options:'i'}},{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{price:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1});
-	res.status(200).json(buyer);
-	}catch(er){
-		console.log(er);
-		res.send(er)
-	}
-	
-})
+
 
 
 
@@ -228,6 +234,18 @@ router.get("/brand",async (req,res)=>{
 		console.log(e);
 	}
 })
+router.get("/search/:query",async (req,res)=>{
+	var query=req.params.query;
+	console.log(query)
+	try{
+		const buyer=await Product.find({$or:[{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{details:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1});
+		res.status(200).json(buyer);
+	}catch(er){
+		console.log(er);
+		res.send(er)
+	}
+	
+})
 
 router.get("/:category",async (req,res)=>{
 	try{
@@ -257,23 +275,9 @@ router.post("/cart", async (req, res) => {
 	
 })
 
-router.post("/favourites", async (req, res) => {
-	try{
-		const arr=req.query.list.split(",");
-		const product=await Product.find(
-			// Find documents matching any of these values
-			{$or:[
-				{"_id":{"$in":arr}},
-				{"_id":{"$in":arr}}
-			]}
-		)
-		res.status(200).json(product);
-	}catch(e){
-		res.status(400).json("err");
-		console.log(e)
-	}
-	
-})
+
+
+
 
 
 module.exports=router;
