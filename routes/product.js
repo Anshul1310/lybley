@@ -235,10 +235,11 @@ router.get("/brand",async (req,res)=>{
 	}
 })
 router.get("/search/:query",async (req,res)=>{
-	var query=req.params.query;
-	console.log(query)
+	var query=req.params.query.split("&")[0];
+	var page=req.params.query.split("&")[1];
+
 	try{
-		const buyer=await Product.find({$or:[{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{details:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1});
+		const buyer=await Product.find({$or:[{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{details:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1}).limit(20*Number(page));
 		res.status(200).json(buyer);
 	}catch(er){
 		console.log(er);
