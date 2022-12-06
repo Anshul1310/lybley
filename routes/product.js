@@ -3,6 +3,7 @@ const Product =require("../models/Product");
 const Jimp=require("jimp");
 const path=require("path");
 const { json } = require("express");
+const { info } = require("console");
 
 router.post("/checkOrders",(req,res)=>{
 	console.log(req.body);
@@ -237,10 +238,17 @@ router.get("/brand",async (req,res)=>{
 router.get("/search/:query",async (req,res)=>{
 	var query=req.params.query.split("&")[0];
 	var page=req.params.query.split("&")[1];
-
+	console.log(query+"  "+page);
+	
 	try{
-		const buyer=await Product.find({$or:[{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{details:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1}).limit(20*Number(page));
-		res.status(200).json(buyer);
+		if(query=="all"){
+			const buyer=await Product.find().limit(page*20);
+			res.status(200).json(buyer);
+		}else(){
+			const buyer=await Product.find({$or:[{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{details:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1}).limit(20*Number(page));
+			res.status(200).json(buyer);
+		}
+		
 	}catch(er){
 		console.log(er);
 		res.send(er)
