@@ -244,7 +244,7 @@ router.get("/search/:query",async (req,res)=>{
 			const buyer=await Product.find().limit(10*Number(page));
 			res.status(200).json(buyer);
 		}else if(page=="all"){
-			const buyer=await Product.find();
+			const buyer=await Product.find({$or:[{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{details:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1});
 			res.status(200).json(buyer);
 		}else{
 			const buyer=await Product.find({$or:[{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{details:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1}).limit(10*Number(page));
