@@ -103,6 +103,7 @@ router.get("/recent",async (req,res)=>{
 
 router.get("/search/:query",async (req,res)=>{
 	var query=req.params.query;
+	console.log(query)
 	try{
 	const buyer=await Product.find({$or:[{_id:  {'$regex': query,$options:'i'}},{title:{'$regex': query,$options:'i'}},{brand:{'$regex': query,$options:'i'}},{price:{'$regex': query,$options:'i'}},{description:{'$regex': query,$options:'i'}}]}).sort({"_id":-1});
 	res.status(200).json(buyer);
