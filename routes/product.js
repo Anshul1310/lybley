@@ -167,7 +167,7 @@ router.get("/all",async (req,res)=>{
 router.get("/cart",async (req,res)=>{
 	try{
 		console.log(req.params);
-		// res.status(200).json(product);
+		res.status(200).json("product");
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})
 		console.log(er);
