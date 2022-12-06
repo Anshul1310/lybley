@@ -164,15 +164,7 @@ router.get("/all",async (req,res)=>{
 	}
 })
 
-router.get("/cart",async (req,res)=>{
-	try{
-		console.log(req.body);
-		res.status(200).json("product");
-	}catch(er){
-		res.status(404).json({msg:"Something went wrong"})
-		console.log(er);
-	}
-})
+
 
 
 
@@ -230,7 +222,23 @@ router.get("/:category",async (req,res)=>{
 	}
 })
 
-
+router.post("/cart", async (req, res) => {
+	try{
+		const arr=req.query.list.split(",");
+		const product=await Product.find(
+			// Find documents matching any of these values
+			{$or:[
+				{"_id":{"$in":arr}},
+				{"_id":{"$in":arr}}
+			]}
+		)
+		res.status(200).json(product);
+	}catch(e){
+		res.status(400).json("err");
+		console.log(e)
+	}
+	
+})
 
 router.post("/favourites", async (req, res) => {
 	try{
