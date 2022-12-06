@@ -180,7 +180,7 @@ function dynamicSort(property) {
 
 router.get("/all",async (req,res)=>{
 	try{
-		const product=await Product.find({},{_id:0, title:0, category:0, store:0, deliveryCharge:0,sold:0, image:0,brand:0, seller:0, moq:0, measuringUnit:0, stock:0, price:0, createdAt:0}).sort({"_id":-1});
+		const product=await Product.find({}).sort({"_id":-1});
 		res.status(200).json(product);
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})

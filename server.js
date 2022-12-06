@@ -39,7 +39,7 @@ mongoose.connect("mongodb://localhost:27017/ecom_app",{
 });
 
 const corsOption = {
-    origin: ['https://bulksy.in'],
+    origin: ['http://localhost:3000'],
     credentials:true,
     methods:["GET","POST","PUT","DELETE"]
 };
