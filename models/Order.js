@@ -28,7 +28,9 @@ const schema=mongoose.Schema({
 	transactionId:{
 		type:String, default:""
 	},
-	paymentType:String,
+	paymentType:{
+		type:String, default:"cod"
+	},
 	orderId:String,
 },{ timestamps: true});
 module.exports=mongoose.model("Order",schema);

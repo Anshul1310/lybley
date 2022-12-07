@@ -51,7 +51,7 @@ router.get("/info",async (req,res)=>{
 
 		for(let i=0;i<12;i++){
 			products.push(data[i].products);
-			orders.push(data[i].sellers);
+			orders.push(data[i].orders);
 			buyers.push(data[i].buyers);
 		}
 		res.status(200).json({products, sellers:orders, buyers});
