@@ -68,14 +68,14 @@ router.get("/cards",async(req,res)=>{
 
 	const buyerNo=await Buyer.countDocuments();
 
-	const orderNo=setting.orderIndex;
+	const orderNo=await Order.countDocuments();
 
 	const productNo=await Product.countDocuments();
 	const earning=await Order.find();
 	
-	let totalPrice=1;
+	let totalPrice=0;
 	earning.map((data)=>{
-		totalPrice=totalPrice+data.totalPrice;
+		totalPrice+=Number(data.totalPrice);
 	})
 	
 	res.status(200).json({totalPrice, buyerNo, productNo, orderNo});
