@@ -2,6 +2,8 @@ const Category=require("../models/Category");
 const router=require("express").Router();
 const Jimp=require("jimp");
 const path=require("path");
+const Product =require("../models/Product");
+
 
 router.post("/add",async (req,res)=>{
 	try{
@@ -97,6 +99,7 @@ router.post("/delete",async (req,res)=>{
 	try{
 		console.log(req.body.id)
 		const category=await Category.deleteOne({name:req.body.id});
+		await Product.deleteMany({category:req.body.id});
 
 		res.status(200).json(category);
 		
