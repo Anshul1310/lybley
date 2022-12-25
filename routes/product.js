@@ -50,7 +50,6 @@ router.post("/add",async (req,res)=>{
 
 router.post("/update",async (req,res)=>{
 	try{
-		console.log(req.body);
 		const {image} =req.body;
 		if(req.body.isChanged){
 			const buffer = Buffer.from(
@@ -67,7 +66,7 @@ router.post("/update",async (req,res)=>{
 			   const options = {
 				upsert: true,
 				new: true,
-				setDefaultsOnInsert: true
+				
 			};
 	   		const product=await Product.findByIdAndUpdate({_id:req.body.id},{
 	   			"$set":{
@@ -80,7 +79,7 @@ router.post("/update",async (req,res)=>{
 			const options = {
 				upsert: true,
 				new: true,
-				setDefaultsOnInsert: true
+				
 			};
 			const product=await Product.findByIdAndUpdate({_id:req.body.id},{
 				"$set":{...req.body}

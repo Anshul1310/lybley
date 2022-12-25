@@ -16,6 +16,7 @@ const schema=mongoose.Schema({
 	stock:{type:Number, default:0, required:true},
 	price:{type:Number, default:0, required:true},
 	slashedPrice:{type:Number, default:0, required:true},
+	customerPrice:{type:Number, default:0},
 	measuringUnit:String
 },{ timestamps: true});
 
