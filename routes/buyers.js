@@ -138,7 +138,7 @@ router.post("/update",async (req,res)=>{
 				...req.body
 			}
 		}, options);
-		res.status(200).json(buyer);
+		res.status(200).json({...buyer, id:buyer._doc._id});
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})
 		console.log(er);
