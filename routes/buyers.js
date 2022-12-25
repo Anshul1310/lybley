@@ -7,7 +7,7 @@ const path=require("path");
 router.post("/add",async (req,res)=>{
 	console.log(req.body)
 	try{
-		const {organization, address, phone,email,shopInner, shopOuter,  additional_number,status, type,gst, pan, name, contact_person, level}=req.body;
+		const {organization, address,userType, phone,email,shopInner, shopOuter,  additional_number,status, type,gst, pan, name, contact_person, level}=req.body;
 		const obj=await Settings.findOne();
 			const number=obj.buyerIndex;
 			await Settings.updateOne({
@@ -43,7 +43,7 @@ router.post("/add",async (req,res)=>{
 				const buyer=await Buyer.create({organization, shopInner:avatarInner, shopOuter:avatarOuter, _id:idIn,status, address, phone,email, additional_number, type,gst, pan, name, contact_person, level});
 				res.status(200).json(buyer);
 			}else{
-			const buyer=await Buyer.create({organization,  _id:idIn,status, address, phone,email, additional_number, type, pan, name, contact_person, gst,level});
+			const buyer=await Buyer.create({userType,organization,  _id:idIn,status, address, phone,email, additional_number, type, pan, name, contact_person, gst,level});
 			res.status(200).json({...buyer,id:buyer._doc._id});
 		}
 
