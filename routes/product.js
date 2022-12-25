@@ -94,7 +94,7 @@ router.post("/update",async (req,res)=>{
 
 
 
-router.post("/product/:id",async (req,res)=>{
+router.get("/product/:id",async (req,res)=>{
 	try{
 		const product=await Product.find({_id:req.params.id});
 		console.log(product);
