@@ -17,7 +17,11 @@ const schema=mongoose.Schema({
 	price:{type:Number, default:0, required:true},
 	slashedPrice:{type:Number, default:0, required:true},
 	customerPrice:{type:Number, default:0},
-	measuringUnit:String
+	measuringUnit:String,
+	image1:{type:String, default:""},
+	image2:{type:String, default:""},
+	image3:{type:String, default:""},
+	image4:{type:String, default:""}
 },{ timestamps: true});
 
 module.exports=mongoose.model("Product", schema);
