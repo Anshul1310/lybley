@@ -11,7 +11,7 @@ const schema=mongoose.Schema({
 	email:String,
 	shopInner:String,
 	dob:String,
-	type:{
+	userType:{
 		default:"retailer",
 		type:String
 	},

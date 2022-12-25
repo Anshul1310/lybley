@@ -128,6 +128,7 @@ router.post("/updateProfileInfo",async (req,res)=>{
 
 router.post("/update",async (req,res)=>{
 	try{
+		console.log(req.body);
 		const options = {
 			upsert: true,
 			new: true,
