@@ -44,7 +44,7 @@ router.post("/add",async (req,res)=>{
 				res.status(200).json(buyer);
 			}else{
 			const buyer=await Buyer.create({organization,  _id:idIn,status, address, phone,email, additional_number, type, pan, name, contact_person, gst,level});
-			res.status(200).json(buyer);
+			res.status(200).json({...buyer,id:buyer._doc._id});
 		}
 
 		
