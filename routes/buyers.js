@@ -5,6 +5,7 @@ const Jimp=require("jimp");
 const path=require("path");
 
 router.post("/add",async (req,res)=>{
+	console.log(req.body)
 	try{
 		const {organization, address, phone,email,shopInner, shopOuter,  additional_number,status, type,gst, pan, name, contact_person, level}=req.body;
 		const obj=await Settings.findOne();
