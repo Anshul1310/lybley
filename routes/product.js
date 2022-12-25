@@ -96,7 +96,7 @@ router.post("/update",async (req,res)=>{
 
 router.get("/product/:id",async (req,res)=>{
 	try{
-		const product=await Product.find({_id:req.params.id});
+		const product=await Product.findOne({_id:req.params.id});
 		res.status(200).json(product);
 	}catch(er){
 		res.status(404).json({msg:"Something went wrong"})
