@@ -30,19 +30,25 @@ router.post("/favourites", async (req, res) => {
 
 router.post("/add",async (req,res)=>{
 	try{
-		const {image} =req.body;
-		const buffer = Buffer.from(
-            image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
-            'base64'
-    	);
-		 const imagePath = `${Date.now()}-${Math.round(
-            Math.random() * 1e9
-        )}.png`;
-		  const jimpRes=await Jimp.read(buffer);
-    	jimpRes.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
-   		const avatar=`/images/${imagePath}`;	
-		const product=await Product.create({...req.body, image:avatar});
-		res.status(200).json(product);
+		if(req.body.isText==undefined){
+			const buffer = Buffer.from(
+				image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
+				'base64'
+			);
+			 const imagePath = `${Date.now()}-${Math.round(
+				Math.random() * 1e9
+			)}.png`;
+			  const jimpRes=await Jimp.read(buffer);
+			jimpRes.resize(400, Jimp.AUTO).write(path.resolve(__dirname, `../images/${imagePath}`));
+			   const avatar=`/images/${imagePath}`;	
+			const product=await Product.create({...req.body, image:avatar});
+			res.status(200).json(product);
+		}else{
+			const product=await Product.create({...req.body});
+			res.status(200).json(product);
+
+		}
+		
 	}catch(e){
 		res.status(400).json(e.message)
 	}
@@ -51,6 +57,7 @@ router.post("/add",async (req,res)=>{
 router.post("/update",async (req,res)=>{
 	try{
 		const {image} =req.body;
+		console.log(req.body.isChanged);
 		if(req.body.isChanged){
 			const buffer = Buffer.from(
             image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
@@ -73,7 +80,6 @@ router.post("/update",async (req,res)=>{
 	   				...req.body, image:avatar
 	   			}
 	   		},options)
-	   		console.log(product)
 	   		res.status(200).json(product);
 		}else{
 			const options = {
