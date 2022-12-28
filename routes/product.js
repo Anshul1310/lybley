@@ -56,8 +56,6 @@ router.post("/add",async (req,res)=>{
 
 router.post("/update",async (req,res)=>{
 	try{
-		const {image} =req.body;
-		console.log(req.body.isChanged);
 		if(req.body.isChanged){
 			const buffer = Buffer.from(
             image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
