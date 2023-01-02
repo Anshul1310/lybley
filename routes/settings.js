@@ -119,6 +119,7 @@ router.get("/banner",async (req,res)=>{
 router.post("/upload",async (req,res)=>{
 	try{
 		const {image} =req.body;
+		console.log(req.body);
 		const buffer = Buffer.from(
             image.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''),
             'base64'
