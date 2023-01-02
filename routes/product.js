@@ -240,6 +240,7 @@ router.get("/brand",async (req,res)=>{
 router.get("/search/:query",async (req,res)=>{
 	var query=req.params.query.split("&")[0];
 	var page=req.params.query.split("&")[1];
+	console.log(req.params.query);
 	
 	try{
 		if(query=="all"){
