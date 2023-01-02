@@ -205,9 +205,12 @@ router.get("/categoryProducts",async (req,res)=>{
 					temp[item.category].push(item);
 				}
 			}else{
-				cat.push(item.category);
-				temp[item.category]=[];
-				temp[item.category].push(item);
+				if(item.category!=null){
+					cat.push(item.category);
+					temp[item.category]=[];
+					temp[item.category].push(item);
+				}
+				
 
 			}
 		})
