@@ -9,7 +9,9 @@ const schema=mongoose.Schema({
 	details: {type:String, default:""},
 	store:String,
 	deliveryCharge:{ type: Number, default: 0 },
-	sold:{ type: Number, default: 0 },//to store how much times the product is sold
+	sold:{ type: Number, default: 0 },
+	variant:{ type: String, default: "" },
+	//to store how much times the product is sold
 	seller:String,
 	moq: {type:Number, default:null, required:true},
 	brand:String,
