@@ -156,7 +156,7 @@ router.get("/bestSelling", async(req,res)=>{
 	try{
 		const product = await Product.find().sort({"_id":-1});
 		product.sort(dynamicSort("sold"))
-		res.status(200).json(product.slice(0,6));
+		res.status(200).json(product);
 	}catch(e){
 		console.log(e)
 		res.status(400).json(e);
